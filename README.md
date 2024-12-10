@@ -1,22 +1,51 @@
-# League of Ledgends Predictive Analysis
+# League of Legends Predictive Analysis
 ---
 ## Introduction
 
-League of Legends is one of the most popular video games in the world, boasting a massive player base and a thriving, lucrative esports scene. Despite its popularity, the game is notorious for being difficult to master, largely due to the critical importance of the early game. Often regarded as the make-or-break phase where victories are decided, this stage is central to many strategies and discussions. This analysis seeks to uncover whether the early game’s importance is a myth perpetuated by the community or a genuine predictor of match outcomes
+(League of Legends)[https://en.wikipedia.org/wiki/League_of_Legends] is one of the most popular video games in the world, boasting a massive player base and a thriving, lucrative esports scene. Despite its popularity, the game is notorious for being difficult to master, largely due to the critical importance of the early game. Often regarded as the make-or-break phase where victories are decided, this stage is central to many strategies and discussions. This analysis seeks to uncover whether the early game’s importance is a myth perpetuated by the community or a genuine predictor of match outcomes
 
-**Dataset:** The project utilizes a dataset from [source, e.g., Kaggle or other source]. This dataset contains **X rows** and **Y columns** and spans topics such as [brief topics]. 
+**This report** aims to cut through anecdotal claims and rigorously examine whether strong early-game performance genuinely correlates with eventual victory. Is the emphasis on first objectives, early gold leads, and timely experience advantages truly justified? Or are these narratives more myth than math? By analyzing professional match data, we seek to clarify the extent to which early dominance predicts a team’s success.
 
-**Central Question:** What is the relationship between [feature] and [target]? Specifically, does [key hypothesis] hold true?
+**Dataset Source:** Our analysis draws from a dataset provided by [Oracle’s Elixir](https://oracleselixir.com/tools/downloads), encompassing approximately 10,000 professional-level esports matches from top-tier leagues such as the LCS, LEC, LCK, and LPL.  
 
-**Why it Matters:** This analysis can provide actionable insights for [target audience, e.g., policymakers, businesses, researchers]. Understanding this relationship helps address [specific problems or opportunities].
+**Central Question:** Do early-game objectives—like securing the first dragon or herald—and establishing resource leads in gold and experience reliably translate into a higher likelihood of winning the match?
+
+**Why It Matters:** Understanding the importance of the early game goes beyond theorycrafting. It informs coaching decisions, enhances commentators’ insights, guides viewers in predicting outcomes during live matches, and even helps regular players refine their strategies.
+
+---
 
 ### Dataset Overview
 
-- **Number of Rows:** X
-- **Relevant Columns:**
-  - **Column 1:** [Description]
-  - **Column 2:** [Description]
-  - **Column 3:** [Description]
+To provide a clearer picture, here is an overview of our cleaned data and the key columns we’ll be examining and using for prediction.
+
+![Professional League of Legends match early-game skirmish](https://via.placeholder.com/800x400)
+
+- **Number of Rows:** 21,946 (each match contributes two rows—one for each team)
+- **Key Columns:**  
+  - **side:** Red or Blue, indicating the team’s starting side.  
+  - **total_counters:** The number of counter-picks the opposing team fields, where a counter-pick is a champion selection that outperforms one chosen by the first team.  
+  - **firstblood:** Binary indicator of whether the team secured the first kill of the match.  
+  - **firstdragon:** Binary indicator of securing the first dragon.  
+  - **firstherald:** Binary indicator of securing the first herald.  
+  - **firstbaron:** Binary indicator of securing the first baron.  
+  - **firsttower:** Binary indicator of taking down the first tower.  
+  - **firsttothreetowers:** Binary indicator of being the first to destroy three towers.  
+  - **goldat15:** Numerical value representing the team’s total gold at 15 minutes.  
+  - **xpat15:** Numerical value representing the team’s total experience at 15 minutes.  
+  - **csat15:** Numerical value representing the team’s total creep score at 15 minutes.  
+  - **golddiffat15:** Numerical value indicating the gold lead or deficit compared to the opponent at 15 minutes.  
+  - **xpdiffat15:** Numerical value indicating the experience lead or deficit at 15 minutes.  
+  - **csdiffat15:** Numerical value indicating the creep score lead or deficit at 15 minutes.  
+
+
+  | side   |   total_counters | firstblood   | firstdragon   | firstherald   | firstbaron   | firsttower   | firstmidtower   | firsttothreetowers   |   goldat15 |   xpat15 |   csat15 |   golddiffat15 |   xpdiffat15 |   csdiffat15 |   killsat15 |   assistsat15 |   deathsat15 |   Win |   avg_pick_win_pct |
+|:-------|-----------------:|:-------------|:--------------|:--------------|:-------------|:-------------|:----------------|:---------------------|-----------:|---------:|---------:|---------------:|-------------:|-------------:|------------:|--------------:|-------------:|------:|-------------------:|
+| Blue   |                1 | False        | False         | True          | True         | True         | True            | True                 |      22384 |    29220 |      498 |           -530 |        -1671 |          -37 |           0 |             0 |            1 |     1 |           0.486409 |
+| Red    |                0 | True         | True          | False         | False        | False        | False           | False                |      22914 |    30891 |      535 |            530 |         1671 |           37 |           1 |             1 |            0 |     0 |           0.474672 |
+| Blue   |                2 | False        | False         | True          | True         | False        | True            | True                 |      24771 |    30084 |      498 |            673 |          530 |          -34 |           4 |             6 |            3 |     0 |           0.466322 |
+| Red    |                1 | True         | True          | False         | False        | True         | False           | False                |      24098 |    29554 |      532 |           -673 |         -530 |           34 |           3 |             4 |            4 |     1 |           0.514853 |
+| Blue   |                0 | False        | False         | False         | False        | False        | True            | False                |      22945 |    27423 |      510 |          -1901 |         -763 |           58 |           2 |             1 |            4 |     1 |           0.480499 |
+
 
 ---
 
