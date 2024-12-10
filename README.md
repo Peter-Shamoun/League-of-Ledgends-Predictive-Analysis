@@ -106,7 +106,7 @@ This graph represents the distribution of total gold earned in League of Legends
 
 <iframe
   src="uni2.html"
-  width="800"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
