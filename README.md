@@ -331,7 +331,7 @@ The model’s performance on the test set is as follows:
 These metrics suggest that the model is performing reasonably well. It correctly classifies around 81.5% of the test cases. The recall and precision values are both above 0.8, indicating a good balance between identifying positive cases and not over-predicting them.
 
 ### Is the Model “Good”?
-While the results are promising for a baseline, calling the model “good” depends on the context and the performance expectations for the given task. An accuracy of around 81% might be considered solid, especially if the baseline or naive methods perform significantly worse. However, there is likely room for improvement. Potential next steps include trying more complex models, adding more predictive features, performing feature engineering, or tuning hyperparameters.
+While the results are promising for a baseline, calling the model “good” depends on the context and the performance expectations for the given task. An accuracy of around 81% might be considered solid, especially if the baseline or naive methods perform significantly worse. However, there is likely room for improvement.
 
 In summary, the model offers a strong starting point with clear room for future refinements.  
 
@@ -341,16 +341,182 @@ In summary, the model offers a strong starting point with clear room for future 
 
 ## Final Model
 
-**Model Description:** [Final model type and features used]  
-**Performance Improvement:** The final model improved upon the baseline by [comparison metrics].  
-**Key Features Added:** [Discuss added features and their relevance to the data generating process]
+## Preprocessing and Feature Engineering
 
-<iframe
-  src="assets/model-performance.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+### Rationale and Overall Strategy
+Before training our final model, it is essential to carefully preprocess our data to ensure that all features are presented to the model in an optimal form. The main goals of our preprocessing and feature engineering steps are to:
+
+1. **Handle and Enhance Features**: Move beyond raw features to derive more meaningful, engineered features that may capture important underlying relationships in the data.
+2. **Normalize and Transform Data**: Apply transformations to numerical features to ensure they are on comparable scales and distributions, mitigating the impact of outliers and skewed distributions.
+3. **Encode Categorical and Boolean Variables**: Convert categorical and boolean variables into numeric encodings suitable for model training, avoiding the pitfalls of ordinal assumptions and ensuring the model can leverage categorical distinctions.
+
+### Feature Engineering Steps
+We begin by applying a custom feature engineering function:
+
+- **`kda_at_15`**: This feature represents the KDA (Kills-Deaths-Assists) ratio at the 15-minute mark. Specifically, it is defined as:
+  \[
+  \text{kda\_at\_15} = \frac{\text{killsat15} + \text{assistsat15}}{\max(\text{deathsat15}, 1)}
+  \]
+  Using a maximum of 1 for deaths ensures we never divide by zero. By engineering this feature, we combine kills, assists, and deaths into a single metric that captures a team’s early combat effectiveness.
+
+- **`gold_xp_ratio_at_15`**: We create a ratio of gold to experience at 15 minutes:
+  \[
+  \text{gold\_xp\_ratio\_at\_15} = \frac{\text{goldat15}}{\max(\text{xpat15}, 1)}
+  \]
+  This ratio highlights how effectively the team is translating early game presence into both gold and experience advantages, which are crucial for snowballing leads.
+
+- **`num_first_objectives`**: We sum across multiple binary indicators of achieving the first key objectives (first blood, first dragon, first herald, first baron, first tower, first mid tower, first to three towers). By aggregating these into a single numeric value, we quantify early objective dominance in a simple metric:
+  \[
+  \text{num\_first\_objectives} = \sum_{\text{obj} \in \{\text{firstblood}, \ldots\}} \mathbf{1}_{\text{obj}}
+  \]
+
+- **`combined_diff_at_15`**: We combine gold, XP, and CS differences at 15 minutes into one feature:
+  \[
+  \text{combined\_diff\_at\_15} = \text{golddiffat15} + \text{xpdiffat15} + \text{csdiffat15}
+  \]
+  This feature captures a broader sense of early advantage by combining multiple performance indicators into a single metric.
+
+- **`win_pct_deviation`**: By taking the average pick win percentage (e.g., the historical performance of the chosen composition) and subtracting 0.5, we measure how much better or worse the team’s average pick win rate is than a coin flip:
+  \[
+  \text{win\_pct\_deviation} = \text{avg\_pick\_win\_pct} - 0.5
+  \]
+
+These engineered features are intended to create more informative representations of early-game performance and team composition strength.
+
+### Data Transformation Decisions
+
+#### 1. Categorical Encoding
+- **Categorical Columns**: For categorical features like `side`, we use a **OneHotEncoder**. This ensures that the model does not assume any ordinal relationship between categories (e.g., "blue" is not inherently greater than "red"). Dropping the first category helps prevent multicollinearity.
+
+#### 2. Boolean Variables
+- **Boolean Columns**: Features like `firstblood`, `firstdragon`, etc., are inherently binary. We convert them directly to integers (0/1) using a `FunctionTransformer`. This straightforward encoding allows the model to treat these features as binary indicators.
+
+#### 3. Power Transformations
+- **Power Transformation (Yeo-Johnson)**: Some numeric features may be skewed or not normally distributed, which can affect many models’ performance. By applying a **PowerTransformer (Yeo-Johnson)** to features such as `goldat15`, `xpat15`, `csat15`, `avg_pick_win_pct`, and others, we aim to reduce skewness and stabilize variance. This often improves the model’s ability to learn patterns from data more effectively.
+
+#### 4. Robust Scaling
+- **Robust Scaling**: Features like `golddiffat15`, `xpdiffat15`, `csdiffat15`, and `combined_diff_at_15` may contain outliers or heavy-tailed distributions. **RobustScaler** uses statistics that are robust to outliers (median and interquartile range) to scale these features, ensuring that a few extreme values don’t dominate the model’s parameter space.
+
+#### 5. Log Transformations
+- **Log Transformation**: For features like `kda_at_15` and `gold_xp_ratio_at_15`, we apply a log transform (`log1p`) to handle their skew and ensure that large values are compressed while small values are expanded more moderately. This can help linear models (and others) better interpret and fit these variables.
+
+#### 6. Other Numeric Columns
+- **Additional Power Transforms**: For certain other numeric features (e.g., `total_counters`, `killsat15`, `assistsat15`, `deathsat15`), we again apply Yeo-Johnson transforms to ensure these features are normalized and more suitable for linear modeling.
+
+### Putting It All Together
+We use a **ColumnTransformer** to systematically apply the appropriate transformations to each group of columns. This ensures a clean, well-documented pipeline and prevents data leakage by fitting transformations on the training set only.
+
+Our final preprocessing pipeline:
+1. **Feature Engineering**: Derive new features (`kda_at_15`, `gold_xp_ratio_at_15`, `num_first_objectives`, `combined_diff_at_15`, `win_pct_deviation`).
+2. **Transformations**: 
+   - Encode categorical features using one-hot encoding.
+   - Convert boolean features to integers.
+   - Apply power transformations to reduce skew in certain continuous variables.
+   - Robust scale features known to have outliers.
+   - Log-transform ratio-based features to improve their distribution.
+   - Apply power transformations to remaining numeric features.
+
+By carefully selecting and applying these transformations, we aim to present the model with well-structured, normalized, and information-rich features. This process lays a strong foundation for achieving improved model performance and interpretability.
+
+
+## Finding the Best Model
+
+To identify the best-performing model, we conducted a thorough hyperparameter tuning process using **GridSearchCV** on three candidate classifiers: **Random Forest**, **XGBoost (XGBClassifier)**, and **Logistic Regression**. Each model was combined with our feature engineering and preprocessing pipeline to ensure a consistent and fair comparison. The goal was to maximize accuracy through 5-fold cross-validation on the training set.
+
+### Models Evaluated and Their Hyperparameters
+1. **RandomForestClassifier**
+   - **Hyperparameters Searched:**
+     - `n_estimators`: [100, 200]
+     - `max_depth`: [None, 5, 10]
+     - `min_samples_split`: [2, 5]
+   - Rationale: Random Forests are a strong baseline ensemble method that handle interactions and nonlinearities well, often improving over simpler models.
+
+2. **XGBClassifier**
+   - **Hyperparameters Searched:**
+     - `n_estimators`: [100, 200]
+     - `max_depth`: [3, 5, 7]
+     - `learning_rate`: [0.01, 0.1, 0.2]
+   - Rationale: XGBoost is a powerful gradient boosting method known for its speed and performance. Tuning `max_depth` and `learning_rate` can significantly enhance its ability to capture complex patterns.
+
+3. **LogisticRegression**
+   - **Hyperparameters Searched:**
+     - `C`: [0.01, 0.1, 1, 10]
+     - `penalty`: ["l2"]
+   - Rationale: Logistic Regression provides a strong baseline linear model that is both interpretable and efficient. Adjusting the regularization strength (`C`) can improve generalization.
+
+### Results and Comparison
+- **RandomForestClassifier**: 
+  - Best Cross-Validation (CV) Accuracy: *Approximately 0.87* (Shown in code output)
+  - Best Hyperparameters: Specific settings chosen from the grid that optimized the CV score.
+  
+- **XGBClassifier**:
+  - Best CV Accuracy: **0.8764 (approximately)** (Highest among the three)
+  - Best Hyperparameters: `model__learning_rate=0.2`, `model__max_depth=3`, `model__n_estimators=100`
+  
+- **LogisticRegression**:
+  - Best CV Accuracy: *Approximately 0.8763* (Very close to XGBoost but slightly lower)
+  - Best Hyperparameters: `model__C=1`, `model__penalty='l2'`
+
+### Best Model Selection
+Although Logistic Regression came close to the top-performing model, the **XGBClassifier** emerged as the best overall performer based on the cross-validation accuracy. After identifying XGBoost as the best model, we tested it on the hold-out test set and obtained a **test accuracy of approximately 0.8748**, confirming the model’s strong generalization capability.
+
+### Conclusion
+The **XGBClassifier** with the tuned hyperparameters consistently outperformed both Random Forest and Logistic Regression in cross-validation and achieved a high score on the test set. This suggests that the boosted ensemble approach is well-suited to our data, capturing intricate interactions between features more effectively than the alternatives explored.
+
+## Finding the Best Parameters for XGBoost
+
+To further optimize our chosen XGBoost model, we performed an extensive hyperparameter search using **GridSearchCV**. The objective was to find the combination of parameters that would yield the highest accuracy during 5-fold cross-validation on the training set. By leveraging our feature engineering and preprocessing pipeline, we ensured that each candidate model was evaluated on identically processed and engineered features.
+
+### Hyperparameters Explored
+We investigated a broad range of hyperparameters to enhance XGBoost’s performance and stability:
+
+- **Number of Trees (`n_estimators`)**: [50, 100]  
+  Tuning this parameter helps us control the ensemble size. More trees can model more complex interactions but risk overfitting.
+
+- **Maximum Tree Depth (`max_depth`)**: [2, 3, 9]  
+  Adjusting the tree depth influences how complex the decision boundaries become. Shallower trees reduce complexity and might enhance generalization, while deeper trees can capture more nuance.
+
+- **Learning Rate (`learning_rate`)**: [0.05, 0.1]  
+  Lower learning rates make the model learn more slowly, which can improve accuracy but requires more iterations. Moderate rates balance training speed with convergence quality.
+
+- **Subsample Ratio (`subsample`)**: [None, 0.8]  
+  Subsampling the training data helps the model become more robust by introducing randomness and can reduce overfitting.
+
+- **Column Subsampling (`colsample_bytree`)**: [None, 0.8]  
+  Similarly, subsampling columns per tree reduces correlation among trees, often improving generalization.
+
+- **Minimum Loss Reduction (`gamma`)**: [None, 0.5]  
+  Increasing `gamma` makes the algorithm more conservative, requiring a higher loss reduction for a split, potentially preventing overfitting.
+
+- **L1 Regularization (`reg_alpha`)**: [None, 0.1]  
+  Adding L1 regularization can help drive weights of irrelevant features toward zero, enhancing interpretability and preventing overfitting.
+
+- **L2 Regularization (`reg_lambda`)**: [None, 1.5]  
+  L2 regularization also helps reduce model complexity by penalizing large weights, improving stability and generalization.
+
+### Results of the Grid Search
+After running the grid search over all specified hyperparameters, we identified the best combination based on the highest cross-validation accuracy score.
+
+- **Best CV Score**: *0.8794* (approximately)
+- **Best Hyperparameters**:
+  - `model__n_estimators`: 100
+  - `model__max_depth`: 3
+  - `model__learning_rate`: 0.1
+  - `model__subsample`: 0.8
+  - `model__colsample_bytree`: None
+  - `model__gamma`: 0.5
+  - `model__reg_alpha`: 0.1
+  - `model__reg_lambda`: 1.5
+
+These parameters balance complexity and regularization, indicating that a moderately deep model with a standard learning rate, some subsampling, and a dash of both L1 and L2 regularization was optimal.
+
+### Performance on the Test Set
+Evaluating the tuned XGBoost model on the hold-out test set yielded a **Test Score of approximately 0.8702**. While slightly lower than the cross-validation score (as expected), this still represents strong performance, reinforcing the conclusion that our parameter tuning and feature preprocessing efforts successfully enhanced the model’s generalization capability.
+
+![confusionmatrix](cm.png)
+
+Overall, this tuning process allowed us to refine the XGBoost model’s configuration, ensuring that we are making the most of our available features and data. The resulting model stands as a robust, well-generalized classifier suitable for the given predictive task.
+
 
 ---
 
