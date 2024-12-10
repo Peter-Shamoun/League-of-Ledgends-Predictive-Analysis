@@ -96,7 +96,7 @@ These steps were very important because they allowed for more complex future ana
 
 <iframe
   src="uni1.html"
-  width="800"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
