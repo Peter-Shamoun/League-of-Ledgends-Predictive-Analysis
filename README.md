@@ -1,6 +1,6 @@
 # League of Legends Predictive Analysis
 
-[![logo](https://brand.riotgames.com/static/a91000434ed683358004b85c95d43ce0/8a20a/lol-logo.png)]
+![logo](https://brand.riotgames.com/static/a91000434ed683358004b85c95d43ce0/8a20a/lol-logo.png)
 ---
 ## Introduction
 
