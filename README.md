@@ -26,7 +26,7 @@ For those who are unfamiliar with League of Legends, you'll need to know *some* 
 
 #### What is League of Legends?
 
-League of Legends is an online video game, particularly a MOBA (multiplayer online battle arena). The game concists of 2 teams of 5 "champions" each with their unique skill set. The goal for each team is to eventually raid and destroy the oposing team's "Nexus" which is essentially their home-base. This is usually done by killing the enemy team's champions,
+League of Legends is an online video game, particularly a MOBA (multiplayer online battle arena). The game concists of 2 teams of 5 "champions" each with their unique skill set. The goal for each team is to eventually raid and destroy the opposing team's "Nexus" which is essentially their home-base. This is usually done by killing the enemy team's champions,
 
 #### What are Objectives?
 
@@ -122,8 +122,8 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
 
 ### Cleaning Steps
 
-1. **Handling Incorrecnt Data Types:** Binary columns, like **firstblood**, **firsttower**, etc., were not boolean values, so these columns were transformed into boolean values. Dates, like the **date** column was not a datetime object, so they also needed to be converted. 
-2. **Transforming Columns:** Columns like **participantid** had redundant information before the key information, like the id. The strings in these columsn were changed to only include important information.
+1. **Handling Incorrecnt Data Types:** Binary columns, like **firstblood**, **firsttower**, etc., were not boolean values, so these columns were transformed into boolean values. The **date** column was not a datetime object, so it also needed to be converted. 
+2. **Transforming Columns:** Columns like **participantid** had redundant information before the key information, like the id. The strings in these columns were changed to only include important information.
 3. **Dropping Player Columns:** The original dataset had 12 entries for each game, as it also captured data for all 10 players in the game. Those columns were not needed in this analysis, since we are looking at team data, so they were dropped 
 4. **Dropping Irrelevant Columns:** Columns concerning things that were not in patch 13, like void grubs, were dropped.
 
@@ -131,11 +131,12 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
 
 New, relevant columns were then created and added to the data.
 
-- **KDA:** This column has the kill death assist ratio for a team which is calculated as $\frac{kills + assists}{deaths}$
+- **KDA:** This column has the kill-death-assist ratio for a team which is calculated as ![formula](https://latex.codecogs.com/png.latex?\frac{kills%20+%20assists}{deaths})
 - **Total Objectives:** This column has the total number of objectives the team does in the game, combining columns concerning towers, dragonds, etc. 
-- **Region:** This column has region of each league. This was done by creating a dictionary mapping of leagues to their ISO-3 country code which will be important later on.
+- **Region:** This column has the region of each league. This was done by creating a dictionary mapping of leagues to their ISO-3 country code which will be important later on.
 - **Total Counters / Counter Pick Data:** These columns were created by using [this JSON mapping](https://github.com/Marwan01/LoL-champ-select/blob/master/src/assets/data.json). If a pick on a team is "countered" by a pick on the other team, a columns pickx_countered is changed from 0 to 1. Then, the teams total counter picks are summed up. 
-- **Win Percentage Data:** For each champion a team selected, the data is searched for that champions win rate percentage which is defined as $\frac{numebr of games where champ is picked and wins}{number of games where champ is picked}$. These columns are then created as pickx_win_pct
+- **Win Percentage Data:** For each champion a team selected, the data is searched for that champion's win rate percentage which is defined as 
+![formula](https://latex.codecogs.com/png.latex?\frac{\text{number%20of%20games%20where%20champ%20is%20picked%20and%20wins}}{\text{number%20of%20games%20where%20champ%20is%20picked}}). These columns are then created as `pickx_win_pct`.
 
 ### Full Final Cleaned table:  
 
@@ -165,7 +166,7 @@ These steps were very important because they allowed for more complex future ana
   frameborder="0"
 ></iframe>
 
-This graph represents the distribution of total gold earned in League of Legends, showing a near-normal distribution with a mean of $56,758 and a median of $56,311. Most teams in this dataset earn gold within this range, while the 5th and 95th percentiles highlight outliers, indicating underperformance or dominant gameplay from teams.
+This graph represents the distribution of total gold earned in all the games in our, showing a near-normal distribution with a mean of $56,758 and a median of $56,311. Most teams in this dataset earn gold within this range, while the 5th and 95th percentiles highlight outliers, indicating underperformance or dominant gameplay from teams. This gives a good baseline as to what to expect from a pro league game, in terms of gold.
 
 
 <iframe
@@ -222,7 +223,7 @@ This table highlights the regions with the most League of Legends matches, sorte
 |   13.04 |            2020 |              56361.4 |
 |   13.12 |            1844 |              56829   |
 
-This table shows the number of matches and average total gold for different patches, with Patch 13.01 having the highest number of matches (3,684) but a slightly lower average total gold (57,019.8) compared to patches like 13.13 (57,323.9). The variation in total gold across patches could indicate adjustments in game balance or changes in meta strategies affecting gold generation.
+This table shows the number of matches and average total gold for different patches. We can see that the first and last patches of the year have the most matches played, signifying that is when most pro League matched occur. The variation in total gold across patches could indicate adjustments in game balance or changes in meta strategies affecting gold generation.
 
 | teamname        |   Games Played |   Wins |   Win Rate (%) |   Avg KDA |   Avg GPM |   Avg DPM |   Avg Vision Score per Minute |   Avg Dragons Taken |   Avg Barons Taken |   Avg Towers Taken |
 |:----------------|---------------:|-------:|---------------:|----------:|----------:|----------:|------------------------------:|--------------------:|-------------------:|-------------------:|
@@ -232,7 +233,10 @@ This table shows the number of matches and average total gold for different patc
 | Gen.G           |            133 |     95 |          71.43 |      9.13 |   1257.64 |   2215.19 |                          9.09 |                2.56 |               0.89 |               7.42 |
 | KT Rolster      |            130 |     88 |          67.69 |      9.7  |   1214.83 |   2022.09 |                          8.69 |                2.6  |               0.81 |               7.04 |
 
-This table highlights team performance based on wins, with JD Gaming achieving the highest win rate (76%) and impressive stats such as the highest Avg GPM (1281.8) and Avg DPM (2397.54), showcasing exceptional gameplay efficiency. Teams like Gen.G and KT Rolster also stand out with high win rates and exceptional KDAs, emphasizing their strong team coordination and map control
+This table highlights team performance based on wins, with Bilibili Gaming having the most amount of wins, followed by the 2023 League of Legends world champions, T1. Teams like Gen.G and KT Rolster also stand out with high win rates and exceptional KDAs, emphasizing their strong team coordination and map control.
+
+![T1](https://cdn.oneesports.gg/cdn-data/2023/11/LeagueOfLegends_Worlds2023_Finals_T1_SummonersCup.jpg)
+*T1 Winning the 2023 League of Legends World Championship*
 
 ---
 ## Assessment of Missingness
@@ -338,13 +342,13 @@ The goal of this analysis is to develop a robust classifier capable of predictin
 
 By focusing on early-game performance indicators, this approach serves a dual purpose:
 
-Outcome Prediction: Providing a reliable estimate of the winning team once the early game concludes.
+**Outcome Prediction:** Providing a reliable estimate of the winning team once the early game concludes.
 
-Feature Importance Analysis: Quantifying the influence of early-game metrics on the overall outcome, shedding light on their significance within professional-level matches.
+**Feature Importance Analysis:** Quantifying the influence of early-game metrics on the overall outcome, shedding light on their significance within professional-level matches.
 
 These features will be those we discussed above, like counter picks, champion win rates, goldat15, csat15, etc.
 
-Why the 15-Minute Mark?
+### Why the 15-Minute Mark?
 
 Importantly, we define the early game as the period ending at the 15-minute mark. This is a pivotal time in professional League of Legends, as teams are permitted to forfeit starting at this point. By using this benchmark, the model’s predictions can serve an additional, practical purpose: guiding teams in deciding whether to continue fighting or concede the game. This makes the model not only a tool for analysis but also a potential decision-support system in live scenarios.
 
@@ -359,7 +363,7 @@ By the end of this process, we aim to uncover not just who is likely to win, but
 ## Baseline Model
 
 ### Model Description
-For our initial baseline model, we have employed a **Logistic Regression** classifier. This choice is motivated by logistic regression’s interpretability and its effectiveness in binary classification tasks. The model is implemented within a scikit-learn **Pipeline** that includes feature preprocessing steps before passing the transformed features into the logistic regression estimator.
+For our initial baseline model, we have employed a [**Logistic Regression**](https://en.wikipedia.org/wiki/Logistic_regression) classifier. This choice is motivated by logistic regression’s interpretability and its effectiveness in binary classification tasks. The model is implemented within a scikit-learn **Pipeline** that includes feature preprocessing steps before passing the transformed features into the logistic regression estimator.
 
 ### Features and Their Types
 Our dataset includes the following features:
@@ -379,6 +383,9 @@ Our dataset includes the following features:
    - goldat15
    - xpat15
 
+
+  
+
 ### Preprocessing and Encodings
 - **Nominal Categorical Feature (side):** Encoded using a **OneHotEncoder**, which creates separate binary columns for each category. One category is dropped to avoid the dummy variable trap.
 - **Boolean Features (firsttower, firsttothreetowers):** Converted to integer values (0 and 1) using a simple function transformer.
@@ -388,9 +395,11 @@ All these steps are combined into a single preprocessing pipeline using a **Colu
 
 ### Model Performance
 The model’s performance on the test set is as follows:
-- **Accuracy:** 0.8153 (approximately)
-- **Recall:** 0.8126 (approximately)
-- **Precision:** 0.8189 (approximately)
+- **Accuracy:** 0.8161 (approximately)
+- **Recall:** 0.8161 (approximately)
+- **Precision:** 0.8187 (approximately)
+
+ ![confusionmatrix](cm_baseline.png)
 
 These metrics suggest that the model is performing reasonably well. It correctly classifies around 81.5% of the test cases. The recall and precision values are both above 0.8, indicating a good balance between identifying positive cases and not over-predicting them.
 
