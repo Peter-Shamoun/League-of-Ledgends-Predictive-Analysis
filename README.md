@@ -1,14 +1,8 @@
-# League-of-Ledgends-Predictive-Analysis
+# League of Ledgends Predictive Analysis
 ---
-layout: default
-title: Unlocking Insights: A Data Analysis Journey
-description: An in-depth exploration of data through cleaning, analysis, and modeling
-author: Your Name
----
-
-# Unlocking Insights: A Data Analysis Journey
-
 ## Introduction
+
+League of Legends is one of the most popular video games in the world, boasting a massive player base and a thriving, lucrative esports scene. Despite its popularity, the game is notorious for being difficult to master, largely due to the critical importance of the early game. Often regarded as the make-or-break phase where victories are decided, this stage is central to many strategies and discussions. This analysis seeks to uncover whether the early game’s importance is a myth perpetuated by the community or a genuine predictor of match outcomes
 
 **Dataset:** The project utilizes a dataset from [source, e.g., Kaggle or other source]. This dataset contains **X rows** and **Y columns** and spans topics such as [brief topics]. 
 
