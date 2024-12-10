@@ -1,9 +1,5 @@
 # League of Legends Predictive Analysis
 
-To embed an image in Markdown that is also a link, you can use the following syntax:
-
-markdown
-Copy code
 [![logo](https://brand.riotgames.com/static/a91000434ed683358004b85c95d43ce0/8a20a/lol-logo.png)]
 ---
 ## Introduction
