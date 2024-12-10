@@ -270,11 +270,25 @@ Another early-game indicator of who will end up winning the game is the amount o
 
 ## Framing a Prediction Problem
 
-**Prediction Type:** [Classification/Regression]  
-**Response Variable:** [Variable name]  
-**Evaluation Metric:** [Metric and justification]  
+The goal of this analysis is to develop a robust classifier capable of predicting the outcome of a League of Legends match (Win/Loss). The model will be trained using early-game metrics and champion selection data, allowing it to deliver predictions based on the state of the game after the early phase has concluded.
 
-**Why This is Important:** This prediction task is crucial for [impact, e.g., operational efficiency, decision-making].
+By focusing on early-game performance indicators, this approach serves a dual purpose:
+
+Outcome Prediction: Providing a reliable estimate of the winning team once the early game concludes.
+
+Feature Importance Analysis: Quantifying the influence of early-game metrics on the overall outcome, shedding light on their significance within professional-level matches.
+
+These features will be those we discussed above, like counter picks, champion win rates, goldat15, csat15, etc.
+
+Why the 15-Minute Mark?
+
+Importantly, we define the early game as the period ending at the 15-minute mark. This is a pivotal time in professional League of Legends, as teams are permitted to forfeit starting at this point. By using this benchmark, the model’s predictions can serve an additional, practical purpose: guiding teams in deciding whether to continue fighting or concede the game. This makes the model not only a tool for analysis but also a potential decision-support system in live scenarios.
+
+By the end of this process, we aim to uncover not just who is likely to win, but why—deepening our understanding of the early game’s true role in determining match outcomes.
+
+
+
+
 
 ---
 
