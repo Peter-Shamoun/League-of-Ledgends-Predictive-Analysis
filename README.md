@@ -401,7 +401,7 @@ The model’s performance on the test set is as follows:
 
  ![confusionmatrix](cm_baseline.png)
 
-These metrics suggest that the model is performing reasonably well. It correctly classifies around 81.5% of the test cases. The recall and precision values are both above 0.8, indicating a good balance between identifying positive cases and not over-predicting them.
+These metrics suggest that the model is performing reasonably well. It correctly classifies around 81.6% of the test cases. The recall and precision values are both above 0.8, indicating a good balance between identifying positive cases and not over-predicting them.
 
 ### Is the Model “Good”?
 While the results are promising for a baseline, calling the model “good” depends on the context and the performance expectations for the given task. An accuracy of around 81% might be considered solid, especially if the baseline or naive methods perform significantly worse. However, there is likely room for improvement.
@@ -427,32 +427,23 @@ Before training our final model, it is essential to carefully preprocess our dat
 We begin by applying a custom feature engineering function:
 
 - **`kda_at_15`**: This feature represents the KDA (Kills-Deaths-Assists) ratio at the 15-minute mark. Specifically, it is defined as:
-  \[
-  \text{kda\_at\_15} = \frac{\text{killsat15} + \text{assistsat15}}{\max(\text{deathsat15}, 1)}
-  \]
-  Using a maximum of 1 for deaths ensures we never divide by zero. By engineering this feature, we combine kills, assists, and deaths into a single metric that captures a team’s early combat effectiveness.
+![formula](https://latex.codecogs.com/png.latex?\text{kda\_at\_15}%20=%20\frac{\text{killsat15}%20+%20\text{assistsat15}}{\max(\text{deathsat15},%201)})
+Using a maximum of 1 for deaths ensures we never divide by zero. By engineering this feature, we combine kills, assists, and deaths into a single metric that captures a team’s early combat effectiveness.
+
 
 - **`gold_xp_ratio_at_15`**: We create a ratio of gold to experience at 15 minutes:
-  \[
-  \text{gold\_xp\_ratio\_at\_15} = \frac{\text{goldat15}}{\max(\text{xpat15}, 1)}
-  \]
-  This ratio highlights how effectively the team is translating early game presence into both gold and experience advantages, which are crucial for snowballing leads.
+![formula](https://latex.codecogs.com/png.latex?\text{gold\_xp\_ratio\_at\_15}%20=%20\frac{\text{goldat15}}{\max(\text{xpat15},%201)})
+This ratio highlights how effectively the team is translating early game presence into both gold and experience advantages, which are crucial for snowballing leads.
 
 - **`num_first_objectives`**: We sum across multiple binary indicators of achieving the first key objectives (first blood, first dragon, first herald, first baron, first tower, first mid tower, first to three towers). By aggregating these into a single numeric value, we quantify early objective dominance in a simple metric:
-  \[
-  \text{num\_first\_objectives} = \sum_{\text{obj} \in \{\text{firstblood}, \ldots\}} \mathbf{1}_{\text{obj}}
-  \]
+![formula](https://latex.codecogs.com/png.latex?\text{num\_first\_objectives}%20=%20\sum_{\text{obj}%20\in%20\{\text{firstblood},%20\ldots\}}%20\mathbf{1}_{\text{obj}})
 
 - **`combined_diff_at_15`**: We combine gold, XP, and CS differences at 15 minutes into one feature:
-  \[
-  \text{combined\_diff\_at\_15} = \text{golddiffat15} + \text{xpdiffat15} + \text{csdiffat15}
-  \]
-  This feature captures a broader sense of early advantage by combining multiple performance indicators into a single metric.
+![formula](https://latex.codecogs.com/png.latex?\text{combined\_diff\_at\_15}%20=%20\text{golddiffat15}%20+%20\text{xpdiffat15}%20+%20\text{csdiffat15})
+This feature captures a broader sense of early advantage by combining multiple performance indicators into a single metric.
 
-- **`win_pct_deviation`**: By taking the average pick win percentage (e.g., the historical performance of the chosen composition) and subtracting 0.5, we measure how much better or worse the team’s average pick win rate is than a coin flip:
-  \[
-  \text{win\_pct\_deviation} = \text{avg\_pick\_win\_pct} - 0.5
-  \]
+- ***`win_pct_deviation`**: By taking the average pick win percentage (e.g., the historical performance of the chosen composition) and subtracting 0.5, we measure how much better or worse the team’s average pick win rate is than a coin flip:
+![formula](https://latex.codecogs.com/png.latex?\text{win\_pct\_deviation}%20=%20\text{avg\_pick\_win\_pct}%20-%200.5)
 
 These engineered features are intended to create more informative representations of early-game performance and team composition strength.
 
@@ -494,7 +485,7 @@ By carefully selecting and applying these transformations, we aim to present the
 
 ## Finding the Best Model
 
-To identify the best-performing model, we conducted a thorough hyperparameter tuning process using **GridSearchCV** on three candidate classifiers: **Random Forest**, **XGBoost (XGBClassifier)**, and **Logistic Regression**. Each model was combined with our feature engineering and preprocessing pipeline to ensure a consistent and fair comparison. The goal was to maximize accuracy through 5-fold cross-validation on the training set.
+To identify the best-performing model, we conducted a thorough hyperparameter tuning process using **GridSearchCV** on three candidate classifiers: [**Random Forest**](https://en.wikipedia.org/wiki/Random_forest), [**XGBoost**](https://en.wikipedia.org/wiki/XGBoost), and [**Logistic Regression**](https://en.wikipedia.org/wiki/Logistic_regression). Each model was combined with our feature engineering and preprocessing pipeline to ensure a consistent and fair comparison. The goal was to maximize accuracy through 5-fold cross-validation on the training set.
 
 ### Models Evaluated and Their Hyperparameters
 1. **RandomForestClassifier**
@@ -518,20 +509,21 @@ To identify the best-performing model, we conducted a thorough hyperparameter tu
    - Rationale: Logistic Regression provides a strong baseline linear model that is both interpretable and efficient. Adjusting the regularization strength (`C`) can improve generalization.
 
 ### Results and Comparison
+![models](models.png)
 - **RandomForestClassifier**: 
-  - Best Cross-Validation (CV) Accuracy: *Approximately 0.87* (Shown in code output)
-  - Best Hyperparameters: Specific settings chosen from the grid that optimized the CV score.
+  - Best Cross-Validation (CV) Accuracy: *Approximately 0.862* (Very close to XGBoost but slightly lower)
+  - Best Hyperparameters: `model__max_depth: 10`, `model__min_samples_split: 2`, `model__n_estimators: 100`
   
 - **XGBClassifier**:
-  - Best CV Accuracy: **0.8764 (approximately)** (Highest among the three)
+  - Best CV Accuracy: **0.877 (approximately)** (Highest among the three)
   - Best Hyperparameters: `model__learning_rate=0.2`, `model__max_depth=3`, `model__n_estimators=100`
-  
+
 - **LogisticRegression**:
-  - Best CV Accuracy: *Approximately 0.8763* (Very close to XGBoost but slightly lower)
+  - Best CV Accuracy: *Approximately 0.846* 
   - Best Hyperparameters: `model__C=1`, `model__penalty='l2'`
 
 ### Best Model Selection
-Although Logistic Regression came close to the top-performing model, the **XGBClassifier** emerged as the best overall performer based on the cross-validation accuracy. After identifying XGBoost as the best model, we tested it on the hold-out test set and obtained a **test accuracy of approximately 0.8748**, confirming the model’s strong generalization capability.
+Although Random Forest came close to the top-performing model, the **XGBClassifier** emerged as the best overall performer based on the cross-validation accuracy. After identifying XGBoost as the best model, we tested it on the hold-out test set and obtained a **test accuracy of approximately 0.8748**, confirming the model’s strong generalization capability.
 
 ### Conclusion
 The **XGBClassifier** with the tuned hyperparameters consistently outperformed both Random Forest and Logistic Regression in cross-validation and achieved a high score on the test set. This suggests that the boosted ensemble approach is well-suited to our data, capturing intricate interactions between features more effectively than the alternatives explored.
