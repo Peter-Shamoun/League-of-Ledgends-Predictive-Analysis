@@ -116,7 +116,7 @@ This map illustrates the global distribution of League of Legends matches by cou
 
 ---
 
-## Bivariate Analysis
+### Bivariate Analysis
 
 <iframe
   src="bi1.html"
@@ -138,7 +138,39 @@ This box plot shows that teams with a positive gold difference of around 1,510 a
 This plot shows the relationship between the number of total objectives secured and the win rate in a game, with a clear upward trend. The threshold of 11 objectives marks the point where teams achieve at least a 50% win rate, emphasizing the importance of securing objectives for victory.
 
 ---
+### Interesting Aggregates
 
+| region   |   Total_Matches |   Average_Team_KDA |   Average_Game_Length_Minutes |   Average_CSPM |
+|:---------|----------------:|-------------------:|------------------------------:|---------------:|
+| CHN      |            3456 |            6.05982 |                       30.7834 |       nan      |
+| USA      |            2258 |            5.66261 |                       31.1989 |        31.6886 |
+| KOR      |            1960 |            6.35519 |                       31.8024 |        33.4114 |
+| DEU      |            1876 |            5.64487 |                       31.5424 |        32.2868 |
+| ESP      |            1460 |            5.32136 |                       31.7064 |        31.1632 |
+
+This table highlights the regions with the most League of Legends matches, sorted by total matches played, with China (CHN) leading at 3,456 matches. South Korea (KOR) stands out with the highest Average Team KDA (6.36) and Average CSPM (33.41), indicating highly efficient gameplay, while the USA has slightly longer game lengths, suggesting varied strategies or playstyles.
+
+|   patch |   Total_Matches |   Average_Total_Gold |
+|--------:|----------------:|---------------------:|
+|   13.01 |            3684 |              57019.8 |
+|   13.13 |            2234 |              57323.9 |
+|   13.11 |            2084 |              55376.6 |
+|   13.04 |            2020 |              56361.4 |
+|   13.12 |            1844 |              56829   |
+
+This table shows the number of matches and average total gold for different patches, with Patch 13.01 having the highest number of matches (3,684) but a slightly lower average total gold (57,019.8) compared to patches like 13.13 (57,323.9). The variation in total gold across patches could indicate adjustments in game balance or changes in meta strategies affecting gold generation.
+
+| teamname        |   Games Played |   Wins |   Win Rate (%) |   Avg KDA |   Avg GPM |   Avg DPM |   Avg Vision Score per Minute |   Avg Dragons Taken |   Avg Barons Taken |   Avg Towers Taken |
+|:----------------|---------------:|-------:|---------------:|----------:|----------:|----------:|------------------------------:|--------------------:|-------------------:|-------------------:|
+| Bilibili Gaming |            164 |    103 |          62.8  |      6.59 |   1240.2  |   2328.93 |                          8.66 |                2.45 |               0.88 |               6.98 |
+| T1              |            152 |     96 |          63.16 |      6.93 |   1212.25 |   2200.14 |                          8.58 |                2.56 |               0.88 |               7.09 |
+| JD Gaming       |            125 |     95 |          76    |      8.07 |   1281.8  |   2397.54 |                          8.73 |                2.47 |               0.82 |               7.5  |
+| Gen.G           |            133 |     95 |          71.43 |      9.13 |   1257.64 |   2215.19 |                          9.09 |                2.56 |               0.89 |               7.42 |
+| KT Rolster      |            130 |     88 |          67.69 |      9.7  |   1214.83 |   2022.09 |                          8.69 |                2.6  |               0.81 |               7.04 |
+
+This table highlights team performance based on wins, with JD Gaming achieving the highest win rate (76%) and impressive stats such as the highest Avg GPM (1281.8) and Avg DPM (2397.54), showcasing exceptional gameplay efficiency. Teams like Gen.G and KT Rolster also stand out with high win rates and exceptional KDAs, emphasizing their strong team coordination and map control
+
+---
 ## Assessment of Missingness
 
 **NMAR Analysis:** The column `[Column]` is potentially NMAR because [explanation]. Additional data on [specific features] could clarify the missingness mechanism.
