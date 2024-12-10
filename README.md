@@ -1,6 +1,6 @@
 # League of Legends Predictive Analysis
 
-![logo](https://brand.riotgames.com/static/a91000434ed683358004b85c95d43ce0/8a20a/lol-logo.png)
+![summoner's rift](https://wiki.leagueoflegends.com/en-us/images/thumb/Summoner%27s_Rift_map_s14.png/1200px-Summoner%27s_Rift_map_s14.png?172d7)
 ---
 ## Introduction
 
