@@ -244,15 +244,27 @@ url's missingness is likley not dependent on barons. This tells us that **url is
 
 ## Hypothesis Testing
 
+Another early-game indicator of who will end up winning the game is the amount of kills at 10 minutes into the game. Here, we will run a permutation test to see if the amount of kills a team has 10 minutes into the game has a relationship with victory. 
+
 ### Test Results
 
-- **Null Hypothesis:** [State null hypothesis]  
-- **Alternative Hypothesis:** [State alternative hypothesis]  
-- **Significance Level:** 0.05  
-- **Test Statistic:** [Chosen statistic]  
-- **p-value:** [Result]  
+- Null Hypothesis: a higher teamkillsat10 has no relationship with the game outcome. The mean teamkillsat10 for winning teams is not higher to that of losing teams.
 
-**Conclusion:** Based on the p-value, we [fail to reject/reject] the null hypothesis, suggesting [conclusion].
+- Alternate Hypothesis: a higher teamkillsat10 suggests a higher chance of winning. The mean teamkillsat10 for winning teams is higher that of losing teams.
+
+
+- Test Statistic: Difference of Means
+
+- Confidence Level: 0.01
+
+<iframe
+  src="hypoth.html"
+  width="1200"
+  height="600"
+  frameborder="0"
+></iframe>
+
+**Conclusion:** The p-value of this hypothesis test was ~0.0. This means that the difference in means between winning teams and losing teams was very likley not due to chance. This means we reject the null hypothesis. This hypothesis test leads us to believe that teamkillsat10 can be used as a good predictor of vicotry, we will use this in our prediction process 
 
 ---
 
