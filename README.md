@@ -101,7 +101,18 @@ These steps were very important because they allowed for more complex future ana
   frameborder="0"
 ></iframe>
 
-**Interpretation:** The distribution of `[Column]` reveals [trend, e.g., normal distribution, skewness], suggesting [key insight].
+This graph represents the distribution of total gold earned in League of Legends, showing a near-normal distribution with a mean of $56,758 and a median of $56,311. Most teams in this dataset earn gold within this range, while the 5th and 95th percentiles highlight outliers, indicating underperformance or dominant gameplay from teams.
+
+
+<iframe
+  src="uni2.html"
+  width="1200"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This map illustrates the global distribution of League of Legends matches by country, with the highest concentration in countries like China, the United States, and South Korea. The darker shades indicate more matches played, showcasing regions with stronger player bases or higher activity levels. This trend may also be seen in the league of legends player base as there may be more players where more esports matches are occuring. 
+
 
 ---
 
