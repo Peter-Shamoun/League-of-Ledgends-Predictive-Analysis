@@ -618,26 +618,25 @@ These groups are determined based on the "side" feature in our dataset.
 ---
 
 ### Test Statistic
-The test statistic is the **difference in precision** between the two groups:
-\[
-\text{Observed Difference} = \text{Precision}_{\text{Blue Side}} - \text{Precision}_{\text{Red Side}}
-\]
+The test statistic is the **difference in precision** between the two groups:  
+![formula](https://latex.codecogs.com/png.latex?\text{Observed%20Difference}%20=%20\text{Precision}_{\text{Blue%20Side}}%20-%20\text{Precision}_{\text{Red%20Side}})
+
 
 ---
 
 ### Significance Level
-The significance level (\(\alpha\)) is set to **0.05**, meaning we will reject the null hypothesis if the p-value is less than 0.05.
+The significance level (![alpha](https://latex.codecogs.com/png.latex?\alpha)) is set to **0.05**, meaning we will reject the null hypothesis if the p-value is less than 0.05.
 
 ---
 
 ### Results
 - **Observed Precision Scores:**
-  - Precision for Blue Side (\( \text{Precision}_X \)): 0.88
-  - Precision for Red Side (\( \text{Precision}_Y \)): 0.86
+  - Precision for Blue Side (![Precision_X](https://latex.codecogs.com/png.latex?\text{Precision}_X)): 0.88
+  - Precision for Red Side (![Precision_Y](https://latex.codecogs.com/png.latex?\text{Precision}_Y)): 0.86
 - **Observed Difference in Precision:**  
-  \[
-  \text{Observed Difference} = 0.0202
-  \]
+  ![formula](https://latex.codecogs.com/png.latex?\text{Observed%20Difference}%20=%200.0202)
+
+
 
 To assess the statistical significance of this observed difference, we conducted a **permutation test** with 10,000 permutations. Under the null hypothesis, the group labels (Blue/Red) were shuffled randomly, and the difference in precision was recalculated for each permutation.
 
@@ -654,7 +653,19 @@ Thus, based on this analysis, we conclude that **our model is fair with respect 
 
 ---
 
-## Conclusion
+### Conclusion: League of Legends Predictive Analysis
 
-Thank you for exploring this data analysis project. If you have questions or feedback, feel free to [contact me](mailto:your-email@example.com).
+Thank you for taking the time to explore this data analysis project! This analysis  highlights the critical impact of early-game performance on match outcomes in professional League of Legends. Using data-driven insights, we confirmed that early objectives, gold, and experience metrics are strong predictors of victory. Our optimized XGBoost model achieved an accuracy of 87%, offering a reliable tool for outcome prediction and strategic decision-making. Fairness analysis showed no significant bias between sides, affirming the model’s credibility. These findings emphasize the pivotal role of early-game dominance, providing actionable insights for players, analysts, and esports enthusiasts.
+
+
+![logo](https://logos-world.net/wp-content/uploads/2020/11/League-of-Legends-Logo.png)
+
+ Your feedback and questions are always welcome, as they help refine and improve future work. If you’d like to connect or discuss this project further, feel free to reach out via any of the following:
+
+- 📧 **Email**: [petershamoun80@gmail.com](mailto:petershamoun80@gmail.com)  
+- 💼 **LinkedIn**: [Peter Shamoun](https://www.linkedin.com/in/peter-shamoun/)  
+- 🌐 **Website**: [Peter Shamoun](https://petershamoun.com/)  
+- 🖥️ **Website**: [Peter Shamoun](https://github.com/Peter-Shamoun)  
+
+Looking forward to hearing from you and collaborating on exciting ideas! 🚀  
 ```
