@@ -666,6 +666,3 @@ Thank you for taking the time to explore this data analysis project! This analys
 - 💼 **LinkedIn**: [Peter Shamoun](https://www.linkedin.com/in/peter-shamoun/)  
 - 🌐 **Website**: [Peter Shamoun](https://petershamoun.com/)  
 - 🖥️ **Website**: [Peter Shamoun](https://github.com/Peter-Shamoun)  
-
-Looking forward to hearing from you and collaborating on exciting ideas! 🚀  
-```
