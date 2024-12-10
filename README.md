@@ -173,21 +173,26 @@ This table highlights team performance based on wins, with JD Gaming achieving t
 ---
 ## Assessment of Missingness
 
-**NMAR Analysis:** The column `[Column]` is potentially NMAR because [explanation]. Additional data on [specific features] could clarify the missingness mechanism.
+**NMAR Analysis:** I believe that the column `url` is potentially NMAR because less important matches or matches with less views might not have a dedicated url. This could mean that more popular leagues could have more urls than less popular leagues. Furthermore, if a game is a playoff game, it might have more views and subsequently, a url.
 
-### Missingness Permutation Test
+### Missingness Dependency
+
+First, we want to test if the url column is dependent on the league column. To do so, we will run a (permuation test)[https://en.wikipedia.org/wiki/Permutation_test]. 
+Our hypotheses and test statstics are the following:
+
+Null Hypothesis ${H_0}$: the URL column's missingness is independent on the league column
+Alternate Hypothesis ${H_a}$: the URL column's missingness is dependent on the league column
+Test Statistic: Total Variation Distance
+Confidence Level: 0.01
 
 <iframe
-  src="assets/missingness-plot.html"
-  width="800"
+  src="missing1.html"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
 
-**Null Hypothesis:** [State null hypothesis]  
-**Alternative Hypothesis:** [State alternative hypothesis]  
-**p-value:** [Result]  
-**Conclusion:** [Interpret results in the context of your question]
+
 
 ---
 
