@@ -1,12 +1,16 @@
 # League of Legends Predictive Analysis
 
 ![summoner's rift](https://wiki.leagueoflegends.com/en-us/images/thumb/Summoner%27s_Rift_map_s14.png/1200px-Summoner%27s_Rift_map_s14.png?172d7)
+*Summoner's Rift, the map the game League of legends is played on*
 ---
 ## Introduction
 
 [League of Legends](https://en.wikipedia.org/wiki/League_of_Legends) is one of the most popular video games in the world, boasting a massive player base and a thriving, lucrative esports scene. Despite its popularity, the game is notorious for being difficult to master, largely due to the critical importance of the early game. Often regarded as the make-or-break phase where victories are decided, this stage is central to many strategies and discussions. This analysis seeks to uncover whether the early game’s importance is a myth perpetuated by the community or a genuine predictor of match outcomes
 
-**This report** aims to cut through anecdotal claims and rigorously examine whether strong early-game performance genuinely correlates with eventual victory. Is the emphasis on first objectives, early gold leads, and timely experience advantages truly justified? Or are these narratives more myth than math? By analyzing professional match data, we seek to clarify the extent to which early dominance predicts a team’s success.
+![worlds](https://cdn.oneesports.gg/cdn-data/2023/07/LeagueofLegends_Worlds2022_ChaseCenter_California_Stage.jpg)
+*The crowd of [2024 League of Legends World Championship, London](https://en.wikipedia.org/wiki/2024_League_of_Legends_World_Championship_final)*
+
+**This report** aims to cut through anecdotal claims and rigorously examine whether strong early-game performance genuinely correlates with eventual victory. Is the emphasis on first objectives, early gold leads, and timely experience advantages truly justified? Or are these narratives perpetuated myths? By analyzing professional match data, we seek to clarify the extent to which early dominance predicts a team’s success.
 
 **Dataset Source:** Our analysis draws from a dataset provided by [Oracle’s Elixir](https://oracleselixir.com/tools/downloads), encompassing approximately 10,000 professional-level esports matches from top-tier leagues such as the LCS, LEC, LCK, and LPL.  
 
@@ -14,6 +18,31 @@
 
 **Why It Matters:** Understanding the importance of the early game goes beyond theorycrafting. It informs coaching decisions, enhances commentators’ insights, guides viewers in predicting outcomes during live matches, and even helps regular players refine their strategies.
 
+---
+### Context
+
+For those who are unfamiliar with League of Legends, you'll need to know *some* things about the game for the following analysis.
+
+#### What is League of Legends?
+
+League of Legends is an online video game, particularly a MOBA (multiplayer online battle arena). The game concists of 2 teams of 5 "champions" each with their unique skill set. The goal for each team is to eventually raid and destroy the oposing team's "Nexus" which is essentially their home-base. This is usually done by killing the enemy team's champions,
+
+#### What are Objectives?
+
+In a League of Legends match, objectives are key strategic goals that contribute to a team's strength and progression toward victory. These objectives not only give advantages like gold, experience, or buffs but also create opportunities to push toward the enemy base. Below are the primary objectives players prioritize during a match:
+
+- **Turrets**: Defensive structures that protect the lanes leading to the enemy Nexus. Destroying these grants gold and opens pathways for further advancement.
+- **Dragons**: Powerful neutral monsters that provide team-wide buffs when defeated. There are several types of elemental dragons, each offering unique bonuses. Securing four dragons unlocks the powerful Dragon Soul.
+- **Baron Nashor**: The most powerful neutral monster, granting a significant team-wide buff that enhances minion strength and helps with sieging enemy bases.
+- **Rift Herald**: A neutral monster that, once defeated, drops a buff allowing the summoning of a creature capable of dealing massive damage to enemy turrets.
+
+#### What is Gold, CS, and Experience?
+
+- **Gold** is the currency used to purchase items in League of Legends to make your champion stronger. You can earn gold by killing enemies, completing objectives, and killing minions (non-playable small monsters).  
+- **XP** (or experience points) are used to level up your champion, making them more powerful. Experience points are gained in the same ways as gold.  
+- **CS** (or creep score) refers to the number of minions and other monsters you have killed. It is an important metric for measuring farming efficiency.
+
+This analysis dives deeper into how teams approach these objectives, the data trends around them, and their overall impact on a match’s outcome.
 ---
 
 ### Dataset Overview
