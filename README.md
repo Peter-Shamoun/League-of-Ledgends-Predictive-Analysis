@@ -69,7 +69,7 @@ In a League of Legends match, objectives are key strategic goals that contribute
 <p><strong>CS</strong> (or creep score) refers to the number of minions and other monsters you have killed. It is an important metric for measuring farming efficiency.</p>
 <img src="https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png" 
      alt="Gold Coins" 
-     style="width: 150px; height: auto; border-radius: 8px;">
+     style="width: 600px; height: auto; border-radius: 8px;">
 </div>
 
 
