@@ -180,10 +180,13 @@ This table highlights team performance based on wins, with JD Gaming achieving t
 First, we want to test if the url column is dependent on the league column. To do so, we will run a (permuation test)[https://en.wikipedia.org/wiki/Permutation_test]. 
 Our hypotheses and test statstics are the following:
 
-Null Hypothesis ${H_0}$: the URL column's missingness is independent on the league column
-Alternate Hypothesis ${H_a}$: the URL column's missingness is dependent on the league column
-Test Statistic: Total Variation Distance
-Confidence Level: 0.01
+- Null Hypothesis: the URL column's missingness is independent on the league column
+
+- Alternate Hypothesis: the URL column's missingness is dependent on the league column
+
+- Test Statistic: Total Variation Distance
+
+- Confidence Level: 0.01
 
 <iframe
   src="missing1.html"
@@ -192,7 +195,50 @@ Confidence Level: 0.01
   frameborder="0"
 ></iframe>
 
+The p-value of this hypothesis test was ~0.0, signifying that the observed TVD is very likley not due to chance. This means we reject the null hypothesis and 
+url's missingness is likley dependent on league. This tells us that **url is MAR on league**.
+---
 
+Now, we want to test if the url column is dependent on the playoff column. Our hypotheses and test statstics are the following: 
+
+- Null Hypothesis: the URL column's missingness is independent on the playoff column
+
+- Alternate Hypothesis: the URL column's missingness is dependent on the playoff column
+
+- Test Statistic: Total Variation Distance
+
+- Confidence Level: 0.01
+
+<iframe
+  src="missing2.html"
+  width="1200"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The p-value of this hypothesis test was ~0.0, signifying that the observed TVD is very likley not due to chance. This means we reject the null hypothesis and 
+url's missingness is likley dependent on playoff. This tells us that **url is MAR on playoff**.
+
+---
+Now, we want to test if the url column is dependent on the barons column. Our hypotheses and test statstics are the following: 
+
+- Null Hypothesis: the URL column's missingness is independent on the barons column
+
+- Alternate Hypothesis: the URL column's missingness is dependent on the barons column
+
+- Test Statistic: Difference of Means
+
+- Confidence Level: 0.01
+
+<iframe
+  src="missing3.html"
+  width="1200"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The p-value of this hypothesis test was ~0.019, signifying that the observed difference in means very likley due to chance. This means we fail to reject the null hypothesis and 
+url's missingness is likley not dependent on barons. This tells us that **url is not MAR on barons**.
 
 ---
 
