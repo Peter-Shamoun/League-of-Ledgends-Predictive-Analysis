@@ -1,4 +1,4 @@
-# League-of-Ledgends-Predictive-Analysis
+# League of Ledgends Predictive Analysis
 ---
 layout: default
 title: Unlocking Insights: A Data Analysis Journey
