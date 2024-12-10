@@ -200,7 +200,7 @@ This box plot shows that teams with a positive gold difference of around 1,510 a
   frameborder="0"
 ></iframe>
 
-This plot shows the relationship between the number of total objectives secured and the win rate in a game, with a clear upward trend. The threshold of 11 objectives marks the point where teams achieve at least a 50% win rate, emphasizing the importance of securing objectives for victory.
+This plot shows the relationship between the number of total objectives secured and the win rate in a game, with a clear upward trend. The threshold of 11 objectives marks the point where teams achieve at least a 50% win rate, emphasizing the importance of securing objectives for victory. Interestingly, it also has a [sigmoid curve](https://en.wikipedia.org/wiki/Sigmoid_function), meaning this could classify winning vs losing games.
 
 ---
 ### Interesting Aggregates
