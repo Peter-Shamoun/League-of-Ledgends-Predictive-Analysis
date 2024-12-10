@@ -286,7 +286,7 @@ Importantly, we define the early game as the period ending at the 15-minute mark
 
 By the end of this process, we aim to uncover not just who is likely to win, but why—deepening our understanding of the early game’s true role in determining match outcomes.
 
-
+![bluevsred](https://i.ytimg.com/vi/IOxhv9ipen8/maxresdefault.jpg)
 
 
 
