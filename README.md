@@ -1,4 +1,5 @@
 # League of Legends Predictive Analysis
+[logo](https://brand.riotgames.com/static/a91000434ed683358004b85c95d43ce0/8a20a/lol-logo.png)
 ---
 ## Introduction
 
@@ -8,7 +9,7 @@
 
 **Dataset Source:** Our analysis draws from a dataset provided by [Oracle’s Elixir](https://oracleselixir.com/tools/downloads), encompassing approximately 10,000 professional-level esports matches from top-tier leagues such as the LCS, LEC, LCK, and LPL.  
 
-**Central Question:** Do early-game objectives—like securing the first dragon or herald—and establishing resource leads in gold and experience reliably translate into a higher likelihood of winning the match?
+**Central Question:** Do early-game objectives—like securing the first dragon or herald—and establishing resource leads in factors like gold and experience reliably translate into a higher likelihood of winning the match?
 
 **Why It Matters:** Understanding the importance of the early game goes beyond theorycrafting. It informs coaching decisions, enhances commentators’ insights, guides viewers in predicting outcomes during live matches, and even helps regular players refine their strategies.
 
@@ -49,7 +50,7 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
   - **Win:** Binary indicator of whether the team won or lost.  
 
 
-
+However, the data was not always this clean. Lets take a look at the data cleaning process.
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
