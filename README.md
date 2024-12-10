@@ -32,27 +32,54 @@ League of Legends is an online video game, particularly a MOBA (multiplayer onli
 
 In a League of Legends match, objectives are key strategic goals that contribute to a team's strength and progression toward victory. These objectives not only give advantages like gold, experience, or buffs but also create opportunities to push toward the enemy base. Below are the primary objectives players prioritize during a match:
 
-- **Turrets**: Defensive structures that protect the lanes leading to the enemy Nexus. Destroying these grants gold and opens pathways for further advancement.
-<iframe
-  src="turret.png"
-  width="1200"
-  height="600"
-  frameborder="0"
-></iframe>
-- **Dragons**: Powerful neutral monsters that provide team-wide buffs when defeated. There are several types of elemental dragons, each offering unique bonuses. Securing four dragons unlocks the powerful Dragon Soul.
-![dragon](https://nexus.leagueoflegends.com/wp-content/uploads/2017/12/LOL_CMS_165_Social_1200_uvxymaboxatdsatlqjwu.jpg)
-- **Baron Nashor**: The most powerful neutral monster, granting a significant team-wide buff that enhances minion strength and helps with sieging enemy bases.
-![barron](barron.png)
-- **Rift Herald**: A neutral monster that, once defeated, drops a buff allowing the summoning of a creature capable of dealing massive damage to enemy turrets.
-![herald](herald.png)
+<div style="font-family: Arial, sans-serif; line-height: 1.6;">
 
-#### What is Gold, CS, and Experience?
 
-- **Gold** is the currency used to purchase items in League of Legends to make your champion stronger. You can earn gold by killing enemies, completing objectives, and killing minions (non-playable small monsters).  
-- **XP** (or experience points) are used to level up your champion, making them more powerful. Experience points are gained in the same ways as gold.  
-- **CS** (or creep score) refers to the number of minions and other monsters you have killed. It is an important metric for measuring farming efficiency.
-![gold](https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png)
- This analysis dives deeper into how teams approach these objectives, the data trends around them, and their overall impact on a match’s outcome.
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+<div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+<h4>Turrets</h4>
+<p>Defensive structures that protect the lanes leading to the enemy Nexus. Destroying these grants gold and opens pathways for further advancement.</p>
+<img src="turret.png" alt="Turret" style="max-width: 100%; border-radius: 8px;">
+</div>
+
+<div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+<h4>Dragons</h4>
+<p>Powerful neutral monsters that provide team-wide buffs when defeated. There are several types of elemental dragons, each offering unique bonuses. Securing four dragons unlocks the powerful Dragon Soul.</p>
+<img src="https://nexus.leagueoflegends.com/wp-content/uploads/2017/12/LOL_CMS_165_Social_1200_uvxymaboxatdsatlqjwu.jpg" alt="Dragon" style="max-width: 100%; border-radius: 8px;">
+</div>
+
+<div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+<h4>Baron Nashor</h4>
+<p>The most powerful neutral monster, granting a significant team-wide buff that enhances minion strength and helps with sieging enemy bases.</p>
+<img src="barron.png" alt="Baron Nashor" style="max-width: 100%; border-radius: 8px;">
+</div>
+
+<div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+<h4>Rift Herald</h4>
+<p>A neutral monster that, once defeated, drops a buff allowing the summoning of a creature capable of dealing massive damage to enemy turrets.</p>
+<img src="herald.png" alt="Rift Herald" style="max-width: 100%; border-radius: 8px;">
+</div>
+
+</div>
+
+---
+
+### What is Gold, CS, and Experience?
+
+<div style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+<p><strong>Gold</strong> is the currency used to purchase items in League of Legends to make your champion stronger. You can earn gold by killing enemies, completing objectives, and killing minions (non-playable small monsters).</p>
+<p><strong>XP</strong> (or experience points) are used to level up your champion, making them more powerful. Experience points are gained in the same ways as gold.</p>
+<p><strong>CS</strong> (or creep score) refers to the number of minions and other monsters you have killed. It is an important metric for measuring farming efficiency.</p>
+<img src="https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png" alt="Gold Coins" style="max-width: 100%; border-radius: 8px;">
+</div>
+
+---
+
+<p>This analysis dives deeper into how teams approach these objectives, the data trends around them, and their overall impact on a match’s outcome.</p>
+
+</div>
+
 
 ---
 
