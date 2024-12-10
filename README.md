@@ -50,7 +50,6 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
   - **csdiffat15:** Numerical value indicating the creep score lead or deficit at 15 minutes.  
   - **Win:** Binary indicator of whether the team won or lost.  
 
-![baron](baron.png) ![drag](dragon.png) ![herald](herald.png)
 #### However, the data was not always this clean. Lets take a look at the data cleaning process.
 ---
 
@@ -96,7 +95,7 @@ These steps were very important because they allowed for more complex future ana
 ### Univariate Analysis
 
 <iframe
-  src="assets/univariate-plot.html"
+  src="assets/uni1.html"
   width="800"
   height="600"
   frameborder="0"
