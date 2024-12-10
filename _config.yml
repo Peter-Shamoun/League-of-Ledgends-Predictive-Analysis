@@ -1,3 +1,6 @@
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+title: League of Legends Predictive Analysis
+description: A comprehensive analysis of how early-game metrics influence game outcomes, utilizing data from patch 13 Global Esports
+author: Peter Shamoun
