@@ -51,7 +51,7 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
   - **Win:** Binary indicator of whether the team won or lost.  
 
 
-However, the data was not always this clean. Lets take a look at the data cleaning process.
+#### However, the data was not always this clean. Lets take a look at the data cleaning process.
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
