@@ -294,8 +294,48 @@ By the end of this process, we aim to uncover not just who is likely to win, but
 
 ## Baseline Model
 
-**Model Description:** [Baseline model and its characteristics]  
-**Performance:** [Baseline performance metrics]  
+### Model Description
+For our initial baseline model, we have employed a **Logistic Regression** classifier. This choice is motivated by logistic regression’s interpretability and its effectiveness in binary classification tasks. The model is implemented within a scikit-learn **Pipeline** that includes feature preprocessing steps before passing the transformed features into the logistic regression estimator.
+
+### Features and Their Types
+Our dataset includes the following features:
+
+1. **side** (Nominal, categorical): Represents which side (e.g., blue or red) the team is on.
+2. **firsttower** (Boolean, treated as nominal): Indicates whether the team secured the first tower kill.
+3. **firsttothreetowers** (Boolean, treated as nominal): Indicates whether the team was the first to destroy three towers.
+4. **goldat15** (Quantitative): The team’s gold amount at the 15-minute mark.
+5. **xpat15** (Quantitative): The team’s experience (XP) at the 15-minute mark.
+
+**Count by Type:**
+- **Nominal (including Boolean):** 3 features  
+   - side (categorical, encoded using OneHotEncoder)
+   - firsttower (boolean, converted to int)
+   - firsttothreetowers (boolean, converted to int)
+- **Quantitative:** 2 features  
+   - goldat15
+   - xpat15
+
+### Preprocessing and Encodings
+- **Nominal Categorical Feature (side):** Encoded using a **OneHotEncoder**, which creates separate binary columns for each category. One category is dropped to avoid the dummy variable trap.
+- **Boolean Features (firsttower, firsttothreetowers):** Converted to integer values (0 and 1) using a simple function transformer.
+- **Quantitative Features (goldat15, xpat15):** Standardized using **StandardScaler** to ensure all features contribute equally to the model without being dominated by larger numerical ranges.
+
+All these steps are combined into a single preprocessing pipeline using a **ColumnTransformer**, which is then chained with the Logistic Regression model through a **Pipeline**. This ensures that all preprocessing is consistently and automatically applied to both training and testing data.
+
+### Model Performance
+The model’s performance on the test set is as follows:
+- **Accuracy:** 0.8153 (approximately)
+- **Recall:** 0.8126 (approximately)
+- **Precision:** 0.8189 (approximately)
+
+These metrics suggest that the model is performing reasonably well. It correctly classifies around 81.5% of the test cases. The recall and precision values are both above 0.8, indicating a good balance between identifying positive cases and not over-predicting them.
+
+### Is the Model “Good”?
+While the results are promising for a baseline, calling the model “good” depends on the context and the performance expectations for the given task. An accuracy of around 81% might be considered solid, especially if the baseline or naive methods perform significantly worse. However, there is likely room for improvement. Potential next steps include trying more complex models, adding more predictive features, performing feature engineering, or tuning hyperparameters.
+
+In summary, the model offers a strong starting point with clear room for future refinements.  
+
+
 
 ---
 
