@@ -95,7 +95,7 @@ These steps were very important because they allowed for more complex future ana
 ### Univariate Analysis
 
 <iframe
-  src="assets/uni1.html"
+  src="uni1.html"
   width="800"
   height="600"
   frameborder="0"
