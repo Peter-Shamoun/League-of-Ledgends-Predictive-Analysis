@@ -106,7 +106,7 @@ This graph represents the distribution of total gold earned in League of Legends
 
 <iframe
   src="uni2.html"
-  width="1200"
+  width="800"
   height="600"
   frameborder="0"
 ></iframe>
@@ -119,13 +119,23 @@ This map illustrates the global distribution of League of Legends matches by cou
 ## Bivariate Analysis
 
 <iframe
-  src="assets/bivariate-plot.html"
-  width="800"
+  src="bi1.html"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
 
-**Interpretation:** The relationship between `[Column X]` and `[Column Y]` shows a [trend, e.g., positive correlation, no clear relationship]. This indicates [relevant insight].
+This box plot shows that teams with a positive gold difference of around 1,510 at 15 minutes are more likely to win, while teams with a negative gold difference of around -1,510 tend to lose. The clear separation of medians highlights the strong correlation between early gold leads and game outcomes in League of Legends 
+
+
+<iframe
+  src="bi2.html"
+  width="1200"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This plot shows the relationship between the number of total objectives secured and the win rate in a game, with a clear upward trend. The threshold of 11 objectives marks the point where teams achieve at least a 50% win rate, emphasizing the importance of securing objectives for victory.
 
 ---
 
