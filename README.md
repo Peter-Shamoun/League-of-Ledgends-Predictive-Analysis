@@ -32,9 +32,13 @@ League of Legends is an online video game, particularly a MOBA (multiplayer onli
 In a League of Legends match, objectives are key strategic goals that contribute to a team's strength and progression toward victory. These objectives not only give advantages like gold, experience, or buffs but also create opportunities to push toward the enemy base. Below are the primary objectives players prioritize during a match:
 
 - **Turrets**: Defensive structures that protect the lanes leading to the enemy Nexus. Destroying these grants gold and opens pathways for further advancement.
+![turret](turret.png)
 - **Dragons**: Powerful neutral monsters that provide team-wide buffs when defeated. There are several types of elemental dragons, each offering unique bonuses. Securing four dragons unlocks the powerful Dragon Soul.
+![dragon](https://nexus.leagueoflegends.com/wp-content/uploads/2017/12/LOL_CMS_165_Social_1200_uvxymaboxatdsatlqjwu.jpg)
 - **Baron Nashor**: The most powerful neutral monster, granting a significant team-wide buff that enhances minion strength and helps with sieging enemy bases.
+![barron](barron.png)
 - **Rift Herald**: A neutral monster that, once defeated, drops a buff allowing the summoning of a creature capable of dealing massive damage to enemy turrets.
+![herald](herald.png)
 
 #### What is Gold, CS, and Experience?
 
