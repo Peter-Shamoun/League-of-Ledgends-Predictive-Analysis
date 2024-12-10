@@ -515,6 +515,9 @@ Evaluating the tuned XGBoost model on the hold-out test set yielded a **Test Sco
 
 ![confusionmatrix](cm.png)
 
+The graph above is a confusion matrix. The confusion matrix shows that the model accurately predicts 87.5% of Losses and 89.4% of Wins, with misclassification rates of 12.5% for Losses and 10.6% for Wins, indicating strong overall performance and a good balance between classes. This suggests that the model is effective at distinguishing between winning and losing scenarios.
+
+
 Overall, this tuning process allowed us to refine the XGBoost model’s configuration, ensuring that we are making the most of our available features and data. The resulting model stands as a robust, well-generalized classifier suitable for the given predictive task.
 
 
@@ -522,14 +525,67 @@ Overall, this tuning process allowed us to refine the XGBoost model’s configur
 
 ## Fairness Analysis
 
-**Groups Analyzed:** [Group X vs. Group Y]  
-**Evaluation Metric:** [Metric]  
-**Null Hypothesis:** [State null hypothesis]  
-**Alternative Hypothesis:** [State alternative hypothesis]  
-**Significance Level:** 0.05  
-**p-value:** [Result]  
+### Objective
+The fairness analysis seeks to determine whether our XGBoost model treats the two sides of the game (**Blue Side** and **Red Side**) fairly. Specifically, we aim to evaluate whether the model's precision is roughly the same for both sides or if there is a statistically significant difference.
 
-**Conclusion:** [Interpret fairness results]
+---
+
+### Hypotheses
+- **Null Hypothesis (H₀):**  
+  Our model is fair. Its precision for the Red Side and Blue Side are roughly the same, and any observed difference is due to random chance.
+  
+- **Alternative Hypothesis (H₁):**  
+  Our model is unfair. Its precision for the Red Side is different from the precision for the Blue Side.
+
+---
+
+### Evaluation Metric
+We chose **precision** as our evaluation metric, as it captures how well the model avoids false positives for each side. This metric is particularly relevant when evaluating the fairness of decision-making for two groups.
+
+---
+
+### Groups
+- **Group X:** Blue Side  
+- **Group Y:** Red Side  
+
+These groups are determined based on the "side" feature in our dataset.
+
+---
+
+### Test Statistic
+The test statistic is the **difference in precision** between the two groups:
+\[
+\text{Observed Difference} = \text{Precision}_{\text{Blue Side}} - \text{Precision}_{\text{Red Side}}
+\]
+
+---
+
+### Significance Level
+The significance level (\(\alpha\)) is set to **0.05**, meaning we will reject the null hypothesis if the p-value is less than 0.05.
+
+---
+
+### Results
+- **Observed Precision Scores:**
+  - Precision for Blue Side (\( \text{Precision}_X \)): 0.88
+  - Precision for Red Side (\( \text{Precision}_Y \)): 0.86
+- **Observed Difference in Precision:**  
+  \[
+  \text{Observed Difference} = 0.0202
+  \]
+
+To assess the statistical significance of this observed difference, we conducted a **permutation test** with 10,000 permutations. Under the null hypothesis, the group labels (Blue/Red) were shuffled randomly, and the difference in precision was recalculated for each permutation.
+
+- **Permutation Test Results:**
+  - **P-value:** 0.2393
+
+![fair](fair.png)
+
+
+The p-value of 0.2393 exceeds the significance level of 0.05, meaning we fail to reject the null hypothesis. This indicates that the observed difference in precision between the Blue Side and Red Side (0.0202) is not statistically significant and could reasonably occur due to random chance.
+
+Thus, based on this analysis, we conclude that **our model is fair with respect to precision across the two sides**.
+
 
 ---
 
