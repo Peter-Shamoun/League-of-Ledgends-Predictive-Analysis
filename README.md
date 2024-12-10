@@ -50,7 +50,7 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
   - **csdiffat15:** Numerical value indicating the creep score lead or deficit at 15 minutes.  
   - **Win:** Binary indicator of whether the team won or lost.  
 
-
+[baron](https://static.wikia.nocookie.net/leagueoflegends/images/4/43/Territorial_Baron_Nashor_Render.png/revision/latest?cb=20231122093255) [drag](https://static.wikia.nocookie.net/leagueoflegends/images/c/ce/Chemtech_Drake_Render.png/revision/latest?cb=20211120030826) [herald](https://static.wikia.nocookie.net/leagueoflegends/images/5/54/Rift_Herald_Render.png/revision/latest?cb=20231129012636) [tower](https://static.wikia.nocookie.net/leagueoflegends/images/d/d6/Summoner%27s_Rift_Outer_turret.png/revision/latest?cb=20181124131140)
 #### However, the data was not always this clean. Lets take a look at the data cleaning process.
 ---
 
