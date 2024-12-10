@@ -46,7 +46,7 @@ In a League of Legends match, objectives are key strategic goals that contribute
 <div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
 <h4>Dragons</h4>
 <p>Powerful neutral monsters that provide team-wide buffs when defeated. There are several types of elemental dragons, each offering unique bonuses. Securing four dragons unlocks the powerful Dragon Soul.</p>
-<img src="https://nexus.leagueoflegends.com/wp-content/uploads/2017/12/LOL_CMS_165_Social_1200_uvxymaboxatdsatlqjwu.jpg" alt="Dragon" style="max-width: 100%; border-radius: 8px;">
+<img src="https://www.cyberpowerpc.com/blog/w/wp-content/uploads/2016/05/sr-dragon-active2.jpg" alt="Dragon" style="max-width: 100%; border-radius: 8px;">
 </div>
 
 <div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
@@ -58,14 +58,10 @@ In a League of Legends match, objectives are key strategic goals that contribute
 <div style="flex: 1 1 45%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
 <h4>Rift Herald</h4>
 <p>A neutral monster that, once defeated, drops a buff allowing the summoning of a creature capable of dealing massive damage to enemy turrets.</p>
-<img src="herald.png" alt="Rift Herald" style="max-width: 100%; border-radius: 8px;">
+<img src="https://dotesports.com/wp-content/uploads/2023/11/9SXkvgjw.png" alt="Rift Herald" style="max-width: 100%; border-radius: 8px;">
 </div>
 
 </div>
-
----
-
-### What is Gold, CS, and Experience?
 
 <div style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
 <p><strong>Gold</strong> is the currency used to purchase items in League of Legends to make your champion stronger. You can earn gold by killing enemies, completing objectives, and killing minions (non-playable small monsters).</p>
@@ -74,7 +70,6 @@ In a League of Legends match, objectives are key strategic goals that contribute
 <img src="https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png" alt="Gold Coins" style="max-width: 100%; border-radius: 8px;">
 </div>
 
----
 
 <p>This analysis dives deeper into how teams approach these objectives, the data trends around them, and their overall impact on a match’s outcome.</p>
 
