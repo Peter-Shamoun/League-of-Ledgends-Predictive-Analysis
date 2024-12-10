@@ -665,4 +665,4 @@ Thank you for taking the time to explore this data analysis project! This analys
 - 📧 **Email**: [petershamoun80@gmail.com](mailto:petershamoun80@gmail.com)  
 - 💼 **LinkedIn**: [Peter Shamoun](https://www.linkedin.com/in/peter-shamoun/)  
 - 🌐 **Website**: [Peter Shamoun](https://petershamoun.com/)  
-- 🖥️ **Website**: [Peter Shamoun](https://github.com/Peter-Shamoun)  
+- 🖥️ **GitHub**: [Peter Shamoun](https://github.com/Peter-Shamoun)  
