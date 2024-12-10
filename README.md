@@ -67,7 +67,9 @@ In a League of Legends match, objectives are key strategic goals that contribute
 <p><strong>Gold</strong> is the currency used to purchase items in League of Legends to make your champion stronger. You can earn gold by killing enemies, completing objectives, and killing minions (non-playable small monsters).</p>
 <p><strong>XP</strong> (or experience points) are used to level up your champion, making them more powerful. Experience points are gained in the same ways as gold.</p>
 <p><strong>CS</strong> (or creep score) refers to the number of minions and other monsters you have killed. It is an important metric for measuring farming efficiency.</p>
-<img src="https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png" alt="Gold Coins" style="max-width: 100%; border-radius: 8px;">
+<img src="https://www.kindpng.com/picc/m/257-2570426_gold-coins-league-of-legends-hd-png-download.png" 
+     alt="Gold Coins" 
+     style="width: 150px; height: auto; border-radius: 8px;">
 </div>
 
 
