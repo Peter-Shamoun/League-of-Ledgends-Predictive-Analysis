@@ -72,7 +72,7 @@ New, relevant columns were then created and added to the data.
 - **Total Objectives:** This column has the total number of objectives the team does in the game, combining columns concerning towers, dragonds, etc. 
 - **Region:** This column has region of each league. This was done by creating a dictionary mapping of leagues to their ISO-3 country code which will be important later on.
 - **Total Counters / Counter Pick Data:** These columns were created by using [this JSON mapping](https://github.com/Marwan01/LoL-champ-select/blob/master/src/assets/data.json). If a pick on a team is "countered" by a pick on the other team, a columns pickx_countered is changed from 0 to 1. Then, the teams total counter picks are summed up. 
-- **Win Percentage Data:** For each champion a team selected, the data is searched for that champions win rate percentage which is defined as $\frac{# of games where champ is picked and wins}{# of games where champ is picked}$. These columns are then created as pickx_win_pct
+- **Win Percentage Data:** For each champion a team selected, the data is searched for that champions win rate percentage which is defined as $\frac{numebr of games where champ is picked and wins}{number of games where champ is picked}$. These columns are then created as pickx_win_pct
 
 ### Full Final Cleaned table:
 
