@@ -499,6 +499,10 @@ By carefully selecting and applying these transformations, we aim to present the
 
 ## Finding the Best Model
 
+| ![Image 1](https://miro.medium.com/v2/resize:fit:725/1*QY3CSyA4BzAU6sEPFwp9ZQ.png) | ![Image 2](https://www.lokad.com//images/blog/random-forests.jpg) | ![Image 3](https://i0.wp.com/neptune.ai/wp-content/uploads/2022/10/Gradient-boosting-LightGBM-vs-XGBoost.png) |
+|:---:|:---:|:---:|
+| **Image 1** | **Image 2** | **Image 3** |
+
 To identify the best-performing model, we conducted a thorough hyperparameter tuning process using **GridSearchCV** on three candidate classifiers: [**Random Forest**](https://en.wikipedia.org/wiki/Random_forest), [**XGBoost**](https://en.wikipedia.org/wiki/XGBoost), and [**Logistic Regression**](https://en.wikipedia.org/wiki/Logistic_regression). Each model was combined with our feature engineering and preprocessing pipeline to ensure a consistent and fair comparison. The goal was to maximize accuracy through 5-fold cross-validation on the training set.
 
 ### Models Evaluated and Their Hyperparameters
