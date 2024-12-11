@@ -2,6 +2,16 @@
 
 ![summoner's rift](https://wiki.leagueoflegends.com/en-us/images/thumb/Summoner%27s_Rift_map_s14.png/1200px-Summoner%27s_Rift_map_s14.png?172d7)
 *Summoner's Rift, the map the game League of legends is played on*
+# Table of Contents
+- [Introduction](#introduction)
+- [Data Cleaning and Exploratory Data Analysis](#data-cleaning-and-exploratory-data-analysis)
+- [Assessment of Missingness](#assessment-of-missingness)
+- [Hypothesis Testing](#hypothesis-testing)
+- [Framing a Prediction Problem](#framing-a-prediction-problem)
+- [Baseline Model](#baseline-model)
+- [Final Model](#final-model)
+- [Fairness Analysis](#fairness-analysis)
+- [Conclusion](#conclusion)
 
 ---
 ## Introduction
