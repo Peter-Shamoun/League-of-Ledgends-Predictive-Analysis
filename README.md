@@ -132,7 +132,7 @@ To provide a clearer picture, here is an overview of our cleaned data and the ke
 
 ### Cleaning Steps
 
-1. **Handling Incorrecnt Data Types:** Binary columns, like **firstblood**, **firsttower**, etc., were not boolean values, so these columns were transformed into boolean values. The **date** column was not a datetime object, so it also needed to be converted. 
+1. **Handling Incorrect Data Types:** Binary columns, like **firstblood**, **firsttower**, etc., were not boolean values, so these columns were transformed into boolean values. The **date** column was not a datetime object, so it also needed to be converted. 
 2. **Transforming Columns:** Columns like **participantid** had redundant information before the key information, like the id. The strings in these columns were changed to only include important information.
 3. **Dropping Player Columns:** The original dataset had 12 entries for each game, as it also captured data for all 10 players in the game. Those columns were not needed in this analysis, since we are looking at team data, so they were dropped 
 4. **Dropping Irrelevant Columns:** Columns concerning things that were not in patch 13, like void grubs, were dropped.
