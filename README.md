@@ -11,7 +11,7 @@
 - [Baseline Model](#baseline-model)
 - [Final Model](#final-model)
 - [Fairness Analysis](#fairness-analysis)
-- [Conclusion](#conclusion)
+- [Conclusion](#conclusion-league-of-legends-predictive-analysis)
 
 ---
 ## Introduction
