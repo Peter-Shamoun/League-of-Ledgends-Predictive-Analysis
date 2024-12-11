@@ -501,7 +501,7 @@ By carefully selecting and applying these transformations, we aim to present the
 
 | ![Image 1](https://miro.medium.com/v2/resize:fit:725/1*QY3CSyA4BzAU6sEPFwp9ZQ.png) | ![Image 2](https://www.lokad.com//images/blog/random-forests.jpg) | ![Image 3](https://i0.wp.com/neptune.ai/wp-content/uploads/2022/10/Gradient-boosting-LightGBM-vs-XGBoost.png) |
 |:---:|:---:|:---:|
-| **Image 1** | **Image 2** | **Image 3** |
+| **Logistic Regression** | **Random Forest** | **XGBoost** |
 
 To identify the best-performing model, we conducted a thorough hyperparameter tuning process using **GridSearchCV** on three candidate classifiers: [**Random Forest**](https://en.wikipedia.org/wiki/Random_forest), [**XGBoost**](https://en.wikipedia.org/wiki/XGBoost), and [**Logistic Regression**](https://en.wikipedia.org/wiki/Logistic_regression). Each model was combined with our feature engineering and preprocessing pipeline to ensure a consistent and fair comparison. The goal was to maximize accuracy through 5-fold cross-validation on the training set.
 
@@ -546,7 +546,11 @@ Although Random Forest came close to the top-performing model, the **XGBClassifi
 ### Conclusion
 The **XGBClassifier** with the tuned hyperparameters consistently outperformed both Random Forest and Logistic Regression in cross-validation and achieved a high score on the test set. This suggests that the boosted ensemble approach is well-suited to our data, capturing intricate interactions between features more effectively than the alternatives explored.
 
+![xgboost_visualized](xgboost.png)
+
+*Illustrating the evolution of decision trees in XGBoost, where weak learners (blurred, simple trees) are sequentially refined into stronger, more effective trees, combining their outputs to form a robust predictive model. credit to [Towards Data Science](https://towardsdatascience.com/a-visual-guide-to-gradient-boosted-trees-8d9ed578b33)*
 ## Finding the Best Parameters for XGBoost
+
 
 To further optimize our chosen XGBoost model, we performed an extensive hyperparameter search using **GridSearchCV**. The objective was to find the combination of parameters that would yield the highest accuracy during 5-fold cross-validation on the training set. By leveraging our feature engineering and preprocessing pipeline, we ensured that each candidate model was evaluated on identically processed and engineered features.
 
